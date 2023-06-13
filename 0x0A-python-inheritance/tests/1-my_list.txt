@@ -42,3 +42,54 @@ True
 []
 
 >>> obj2 = MyList()
+
+
+>>> obj2.append(0)
+
+>>> obj2.append(-1)
+
+>>> obj2.append(-9)
+
+>>> obj2.append(-233)
+
+>>> print(obj2)
+[-1, 0, -233, -9]
+
+>>> obj2.print_sorted()
+[-233, -9, -1, 0]
+
+>>> obj3 = MyList()
+
+>>> obj3.append(NULL)
+Traceback (most recent call last):
+    ...
+NameError: name 'NULL' is not defined
+
+>>> print(obj3)
+[]
+
+>>> obj3.print_sorted()
+[]
+
+>>> obj4 = MyList()
+
+>>> obj4.append(NaN)
+Traceback (most recent call last):
+    ...
+NameError: name 'NaN' is not defined
+
+>>> print(obj4)
+[]
+
+>>> obj4.print_sorted()
+[]
+
+>>> obj5 = MyList()
+
+>>> obj5.append(None)
+
+>>> print(obj5)
+[None]
+
+>>> obj5.print_sorted()
+[None]
