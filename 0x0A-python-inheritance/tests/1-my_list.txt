@@ -43,7 +43,6 @@ True
 
 >>> obj2 = MyList()
 
-
 >>> obj2.append(0)
 
 >>> obj2.append(-1)
@@ -60,7 +59,7 @@ True
 
 >>> obj3 = MyList()
 
->>> obj3.append(NULL)
+>> obj3.append(NULL)
 Traceback (most recent call last):
     ...
 NameError: name 'NULL' is not defined
