@@ -11,5 +11,4 @@ def read_file(filename=""):
     Prints the content of a file
     """
     with open(filename) as file_object:
-        read_data = file_object.read()
-    print(read_data)
+        print(file_object.read(), end='')
