@@ -40,6 +40,15 @@ class TestRectangle(unittest.TestCase):
         r.y = 8
         self.assertEqual(r.y, 8)
 
+    def test_area(self):
+        # Test case: Calculating the area of a rectangle
+        r = Rectangle(4, 6)
+        self.assertEqual(r.area(), 24)
+
+        # Test case: Calculating the area of a square
+        r = Rectangle(5, 5)
+        self.assertEqual(r.area(), 25)
+
 
 if __name__ == '__main__':
     unittest.main()
