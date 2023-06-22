@@ -75,3 +75,44 @@ class Base:
         if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Creates an instance with attributes set based on
+        the provided dictionary.
+
+        Args:
+            **dictionary (dict): The dictionary of attribute values.
+
+        Returns:
+            Base: The created instance.
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            dummy = cls()
+        dummy.update(**dictionary)
+        return dummy
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the attributes of an instance.
+
+        Args:
+            *args: The positional arguments.
+            **kwargs: The keyword arguments.
+
+        Returns:
+            None.
+        """
+        if args:
+            attrs = ["id", "width", "height", "size", "x", "y"]
+            for i, value in enumerate(args):
+                if i < len(attrs):
+                    setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
