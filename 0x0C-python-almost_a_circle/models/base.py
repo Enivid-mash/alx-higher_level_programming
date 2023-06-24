@@ -131,7 +131,8 @@ class Base:
                 json_data = file.read()
                 if json_data:
                     obj_list = cls.from_json_string(json_data)
-                    instances = [cls.create(**obj_dict) for obj_dict in obj_list]
+                    instances = [cls.create(**obj_dict) for
+                                 obj_dict in obj_list]
                     return instances
                 else:
                     return []
