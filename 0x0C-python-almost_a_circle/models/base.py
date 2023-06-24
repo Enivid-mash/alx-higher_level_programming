@@ -6,6 +6,7 @@ foundation for other classes.
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -58,7 +59,7 @@ class Base:
         if list_objs is None:
             list_objs = []
         json_string = cls.to_json_string([obj.to_dictionary() for obj
-                                         in list_objs])
+            in list_objs])
         with open(filename, "w") as file:
             file.write(json_string)
 
@@ -133,7 +134,7 @@ class Base:
                 if json_data:
                     obj_list = cls.from_json_string(json_data)
                     instances = [cls.create(**obj_dict) for
-                                 obj_dict in obj_list]
+                            obj_dict in obj_list]
                     return instances
                 else:
                     return []
@@ -185,3 +186,41 @@ class Base:
                     return []
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Opens a window and draws all the Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): A list of Rectangle objects.
+            list_squares (list): A list of Square objects.
+        """
+        def draw_shape(shape):
+            t.penup()
+            t.goto(shape.x, shape.y)
+            t.pendown()
+            t.setheading(0)  # Reset the turtle heading
+            if isinstance(shape, Rectangle):
+                for _ in range(2):
+                    t.forward(shape.width)
+                    t.right(90)
+                    t.forward(shape.height)
+                    t.right(90)
+            elif isinstance(shape, Square):
+                for _ in range(4):
+                    t.forward(shape.size)
+                    t.right(90)
+
+        screen = turtle.Screen()
+        t = turtle.Turtle()
+        t.speed(1)  # Adjust the drawing speed if needed
+        t.shape("turtle")  # Set the turtle shape to a turtle icon
+
+        for rectangle in list_rectangles:
+            draw_shape(rectangle)
+
+        for square in list_squares:
+            draw_shape(square)
+
+        turtle.done()
