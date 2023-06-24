@@ -5,6 +5,7 @@ foundation for other classes.
 """
 
 import json
+import csv
 
 
 class Base:
@@ -133,6 +134,52 @@ class Base:
                     obj_list = cls.from_json_string(json_data)
                     instances = [cls.create(**obj_dict) for
                                  obj_dict in obj_list]
+                    return instances
+                else:
+                    return []
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes instances to CSV format and saves to a file.
+
+        Args:
+            list_objs (list): A list of instances.
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as file:
+            if list_objs is None or len(list_objs) == 0:
+                file.write("")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fields = ["id", "size", "x", "y"]
+
+                writer = csv.DictWriter(file, fieldnames=fields)
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserializes instances from a CSV file.
+
+        Returns:
+            list: A list of instances.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r") as file:
+                if file.readable():
+                    reader = csv.DictReader(file)
+                    instances = []
+                    for row in reader:
+                        obj_dict = {k: int(v) for k, v in row.items()}
+                        instances.append(cls.create(**obj_dict))
                     return instances
                 else:
                     return []
