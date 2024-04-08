@@ -2,7 +2,7 @@
 let result = '';
 if (!isNaN(parseInt(process.argv[2]))) {
   for (let i = 0; i < process.argv[2]; i++) {
-    result += 'x';
+    result += 'X';
   }
 } else {
   console.log('Missing size');
