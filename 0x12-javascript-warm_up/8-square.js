@@ -1,8 +1,8 @@
 #!/usr/bin/node
-result = '';
+let result = '';
 if (!isNaN(parseInt(process.argv[2]))) {
   for (let i = 0; i < process.argv[2]; i++) {
-  result += 'x';
+    result += 'x';
   }
 } else {
   console.log('Missing size');
