@@ -9,15 +9,16 @@ class Rectangle {
       this.height = h;
     }
   }
-  print() {
-		let result = '';
-		for (let i = 0; i < this.width; i++) {
-			result += 'X';
-		}
-		for (let j = 0; j < this.height; j++) {
-			console.log(result);
-		}
-	}
+
+  print () {
+    let result = '';
+    for (let i = 0; i < this.width; i++) {
+      result += 'X';
+    }
+    for (let j = 0; j < this.height; j++) {
+      console.log(result);
+    }
+  }
 }
 
 // Export the class a module
