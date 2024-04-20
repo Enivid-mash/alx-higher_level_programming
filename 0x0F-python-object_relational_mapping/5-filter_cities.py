@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     rows_selected = db_cursor.fetchall()
 
-    print(', '.join([f"{row[0]}" for row in rows_selected]))
+    print(', '.join(["{:s}".format(row[0]) for row in rows_selected]))
 
     db_cursor.close()
     db_connect.close()
