@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     # Use a parameterized query to select matching states
     # Instead of formatting the query string directly, we use placeholders (%s)
-    query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
+    query = """SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"""
 
     # Pass the state name as a parameter to execute() method
     db_cursor.execute(query, (argv[4],))
