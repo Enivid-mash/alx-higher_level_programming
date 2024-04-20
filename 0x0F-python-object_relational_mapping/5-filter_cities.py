@@ -13,7 +13,8 @@ if __name__ == '__main__':
 
     db_cursor = db_connect.cursor()
 
-    query = """SELECT cities.id, cities.name, states.name FROM states INNER JOIN cities ON states.id = cities.state_id ORDER BY cities.id ASC"""
+    query = """SELECT cities.name FROM states INNER JOIN cities ON states.id =
+    cities.state_id WHERE states.name LIKE %s ORDER BY cities.id ASC"""
 
     db_cursor.execute(query, (argv[4],))
 
