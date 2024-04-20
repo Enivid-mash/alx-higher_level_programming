@@ -23,8 +23,8 @@ if __name__ == "__main__":
     session = Session()
 
     # Query state instances in the database containing the letter 'a'
-    for state in
-    session.query(State).filter(State.name.like('%a%')).order_by(State.id):
+    for state in session.query(
+            State).filter(State.name.like('%a%')).order_by(State.id):
         print(f"{state.id}: {state.name}")
 
     session.close()
