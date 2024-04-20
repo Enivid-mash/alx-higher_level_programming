@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Access to the database and get the states
-from the database.
+Return matching states with parameters provided to the script: username,
+password, database, and state to match.
 """
 
 import MySQLdb
