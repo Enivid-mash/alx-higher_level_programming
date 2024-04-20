@@ -13,8 +13,8 @@ if __name__ == '__main__':
 
     db_cursor = db_connect.cursor()
 
-    db_cursor.execute(f"""SELECT *
-            FROM states WHERE name LIKE '{argv[4]}' ORDER BY id ASC""")
+    db_cursor.execute("""SELECT * FROM states WHERE
+            name LIKE '{:s}' ORDER BY id ASC""".format(argv[4]))
 
     rows_selected = db_cursor.fetchall()
 
